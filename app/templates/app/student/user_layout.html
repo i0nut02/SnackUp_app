@@ -1,0 +1,10 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block nav %}
+    <a href="{% url 'login' %}">Account</a>
+    <a href="{% url 'login' %}">Cart</a>
+    <a href="{% url 'login' %}">Orders</a>
+    <a href="{% url 'login' %}">Menu</a>
+    <a href="{% url 'logout' %}">Log out</a>
+{% endblock %}

@@ -1,0 +1,100 @@
+#main {
+    background-color: aqua;
+}
+
+.not-nav {
+    pointer-events: all;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    background:fixed no-repeat center;
+    border-bottom: solid 2px white;
+}
+
+.icon {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.container {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    border-radius: 100%;
+    padding: 1%;
+    width: 35px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color:white;
+    overflow-x: hidden;
+    transition: 0.3s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 20%;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 30px;
+}   
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.418);
+    display: block;
+    transition: 0.1s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: black;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px){
+    .overlay a {font-size: 20px;}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.image-set {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 48px;
+}
+
+.logo {
+    margin-top: 30px;
+    height: 70px;
+}
+
+

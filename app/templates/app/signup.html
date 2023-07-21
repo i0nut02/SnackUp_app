@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="{% static 'app/account.css' %}">
+    </head>
+    <body>
+        <form action="{% url 'signup' %}" method="post" style="border:1px solid #ccc" >
+            {% csrf_token %}
+            <div class="container">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <b style="color: red;">{% if message %}{{ message }}{% endif %}</b>
+                <hr>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" required>
+
+                <label for="phone-number"><b>Phone Number</b></label>
+                <input type="tel" placeholder="Enter Phone Number" name="phone-number" required>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="classroom"><b>Select Classroom</b></label>
+                <select name="classroom" required>
+                    <option value="None">Not exist or i insert it later</option>
+                    {% for classroom in classrooms %}
+                        <option value="{{ classroom.id }}">{{ classroom }}</option>
+                    {% endfor %}
+                </select>
+    
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="password-repeat">
+                
+                <p>Already have an account? <a href="{% url 'login' %}" style="color:dodgerblue">Login</a>.</p>
+
+                <div class="clearfix">
+                <button type="reset" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "app/student/user_layout.html" %}
+{% load static %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'app/index.css' %}">
+{% endblock %}
+
+{% block pagecontent %}
+    <h1><center>Hi {{ user_name }}!</center></h1>
+    <div class="centered">
+        <a href="{% url 'menu' %}"><button class="button">View the menù</button></a>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'app/layout.css' %}">
+        {% block links %}
+        {% endblock %}
+    </head>
+    <body id="main">
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <div class="overlay-content">
+                {% block nav %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="header not-nav">
+            <div class="image-set">
+                <img src="{% static 'app/images/Snack_Up_logo.png' %}" alt="Snack Up" class="logo">
+            </div>
+            <div class="container">
+                <div onclick="openNav()">
+                    <div class="icon"></div>
+                    <div class="icon"></div>
+                    <div class="icon"></div>
+                </div>
+            </div>
+        </div>
+        <div class="not-nav">
+            {% block pagecontent %}
+            {% endblock %}
+        </div>
+    </body>
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById("myNav").style.width = "70%";
+        }
+
+        function closeNav(){
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+</html>

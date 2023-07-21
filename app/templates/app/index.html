@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'app/index.css' %}">
+{% endblock %}
+
+{% block nav %} 
+    <a href="{% url 'login' %}">Log in</a>
+    <a href="{% url 'signup' %}">Sign up</a>
+{% endblock %}
+
+{% block pagecontent %}
+    <div class="centered">
+        <a href="{% url 'login' %}"><button class="button">  Log in</button></a>
+        <a href="{% url 'signup' %}"><button class="button"> Sign in</button></a>
+    </div>
+{% endblock %}
+
