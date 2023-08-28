@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block nav %}
-    <a href="{% url 'login' %}">Account</a>
-    <a href="{% url 'login' %}">Cart</a>
-    <a href="{% url 'login' %}">Orders</a>
-    <a href="{% url 'login' %}">Menu</a>
+    <a href="{% url 'account' %}">Account</a>
+    <a href="{% url 'orders' %}">Orders</a>
+    <a href="{% url 'menu' %}">Menu</a>
+    <a href="{% url 'cart' %}">Cart</a>
     <a href="{% url 'logout' %}">Log out</a>
 {% endblock %}

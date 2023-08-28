@@ -1,0 +1,26 @@
+/* Style for the order class */
+.order {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .order-time {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the food list */
+  .food-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  .food-list li {
+    margin-bottom: 5px;
+  }
+  

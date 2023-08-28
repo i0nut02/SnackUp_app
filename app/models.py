@@ -3,6 +3,12 @@ from django.db import models
 # Create your models here.   
 # think about a relationship beetween Company and User, and one beetween Student and User
 
+class Payment_Method(models.Model):
+    name = models.CharField(max_length=64, primary_key=True)
+
+    def __str__(self):
+        return self.name
+
 class Category(models.Model):
     name = models.CharField(max_length=64, primary_key=True)
 
@@ -24,6 +30,7 @@ class Company(models.Model):
     phone_number = models.CharField(max_length=15, unique=True)
     username = models.CharField(max_length=64)
     foods = models.ManyToManyField(Food, blank=True)
+    payment_methods = models.ManyToManyField(Payment_Method)
 
     def __str__(self):
         return f"{self.username}, {self.email}"
@@ -52,7 +59,7 @@ class Classroom(models.Model):
     specialisation = models.CharField(max_length=32)
 
     def __str__(self):
-        return f"ID: {self.id}\nSchool: {str(self.school)}\ngrade: {self.grade}, section: {self.section}, specialisation: {self.specialisation}"
+        return f"ID: {self.id}\nSchool: {str(self.school)}, grade: {self.grade}, section: {self.section}, specialisation: {self.specialisation}"
     
     class Meta:
         unique_together = ("school", "grade", "section", "specialisation")
@@ -60,11 +67,29 @@ class Classroom(models.Model):
 
 class Student(models.Model):
     phone_number = models.CharField(max_length=15, unique=True)
-    email = models.EmailField(primary_key=True, max_length=128)
+    email = models.EmailField(max_length=128, unique=True)
     username = models.CharField(max_length=64, default= email)
     classroom = models.ForeignKey(Classroom, blank=True, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.username}"
 
+
+class Order(models.Model):
+    student = models.ForeignKey(Student, on_delete= models.SET_NULL, null= True)
+    company = models.ForeignKey(Company, on_delete= models.SET_NULL, null= True)
+    total_price = models.PositiveIntegerField()
+    instant_purchase = models.DateTimeField()
+
+
+class Food_Order(models.Model):
+    food = models.ForeignKey(Food, on_delete= models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete= models.CASCADE)
+    quantity = models.PositiveIntegerField()
+
+
+class Cart(models.Model):
+    student = models.ForeignKey(Student, on_delete= models.CASCADE)
+    food = models.ForeignKey(Food, on_delete= models.CASCADE)
+    quantity = models.PositiveIntegerField()
 

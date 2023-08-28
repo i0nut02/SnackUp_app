@@ -1,0 +1,19 @@
+{% extends "app/student/user_layout.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'app/student/successful_order.css' %}">
+{% endblock %}
+
+{% block pagecontent %}
+    <div class="center-svg">
+        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="75" cy="80" r="60" stroke="none" stroke-width="2" fill="white" />
+            <path d="M70,110 L35,75 M66,110 L120,62" stroke="aqua" stroke-width="6" fill="none" />
+        </svg>
+    </div>
+    <div class="text-center"><b>Successful ordered!</b></div>
+    <div class="center-btn">
+        <a href="{% url 'orders' %}"><button type="submit" id="order">View your orders here</button></a>
+    </div>
+{% endblock %}

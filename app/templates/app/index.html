@@ -13,9 +13,14 @@
 {% endblock %}
 
 {% block pagecontent %}
-    <div class="centered">
-        <a href="{% url 'login' %}"><button class="button">  Log in</button></a>
-        <a href="{% url 'signup' %}"><button class="button"> Sign in</button></a>
+    <div class="index-choice centered">
+        <div class="content-button">
+            <a href="{% url 'login' %}"><button class="button">Log in</button></a>
+        </div>
+        <div class="content-button">
+            <a href="{% url 'signup' %}"><button class="button">Sign up</button></a>
+        </div>
     </div>
 {% endblock %}
+
 

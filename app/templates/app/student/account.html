@@ -1,0 +1,45 @@
+{% extends "app/student/user_layout.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'app/student/account.css' %}">
+{% endblock %}
+
+{% block pagecontent %}
+    {% if message %}
+        <div style="text-align: center;">
+            <b> {{ message }}</b>
+        </div>
+    {% endif %}
+    {% for key,value in data.items %}
+        {% if not key == "Classroom" %}
+            <a href="{% url 'change_information' key|lower %}">
+                <div class="main">
+                    <div class="information">
+                        <h4>{{key}}</h4>
+                        {{value}}
+                    </div>
+                    <div class="right-row">❯</div>
+                </div>
+            </a>
+        {% else %}
+        <a href="{% url 'change_information' key|lower %}">
+            <div class="main">
+                <div class="information">
+                    <h4>{{key}}</h4>
+                    {{value.grade}}, {{value.section}}, {{value.specialisation}}, {{value.school.name}}
+                </div>
+                <div class="right-row">❯</div>
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+    <a href="{% url 'change_information' 'password' %}">
+        <div class="main">
+            <div class="information">
+                <h3>Change Password</h3>
+            </div>
+            <div class="right-row">❯</div>
+        </div>
+    </a>
+{% endblock %}

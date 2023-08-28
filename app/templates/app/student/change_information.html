@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change {{ information }}'s Information</title>
+        <link rel="stylesheet" href="{% static 'app/student/change_information.css' %}">
+    </head>
+    <body>
+        <h1>Change {{ information }} Information</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ information|lower }}">{{ information }}:</label>
+
+            {% if message %}
+                <div class="error-message">{{ message }}</div>
+            {% endif %}
+
+            {% if list %}
+                <select id="{{ information|lower }}" name="{{ information|lower }}" required>
+                    <option value="None">Not exist</option>
+                    {% for element in list %}
+                        <option value="{{ element.id }}">{{ element }}</option>
+                    {% endfor %}
+                </select>
+            {% else %}
+
+                {% if last_information %}
+                    <input type="text" id="{{ last_information }}" name="{{ information|lower }}" value="{{ last_information }}" required>
+                {% else %}
+                    <input type="password" id="password1" name="password1" required>
+                    <input type="password" id="password2" name="password2" required>
+                {% endif %}
+            {% endif %}
+            <br>
+            <input type="submit" value="Save Changes">
+            <br>
+            <br>
+            <a href="{% url 'account' %}"><input type="button" value="Go back"></a>
+        </form>
+    </body>
+</html>

@@ -11,8 +11,8 @@
     <body id="main">
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-            <div class="overlay-content">
+            <img src="{% static 'app/images/Snack_Up_logo.png' %}" alt="Snack Up" class="logo centered-img" style="margin-left: 40%;">
+            <div class="overlay-content" style="margin-top: 0px;">
                 {% block nav %}
                 {% endblock %}
             </div>

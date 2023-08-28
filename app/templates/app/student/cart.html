@@ -1,0 +1,91 @@
+{% extends "app/student/user_layout.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'app/student/cart.css' %}">
+{% endblock %}
+
+{% block pagecontent %}
+    <form action="{% url 'cart' %}" method="POST">
+        {% csrf_token %}
+        <div class="order-content">
+            <div class="foods">
+                {% for food in order %}
+                    <div class="food-info">
+                        <div class="food-var">
+                            <div class="food-name" id="food-{{food.0.id}}">{{ food.0.name }} {{ food.0.price|floatformat }}</div>
+
+                            <div class="quantity">
+                                <button type="button" class="btn-quantity" onclick="addPrice('{{food.0.price}}', this.parentNode.querySelector('[type=number]').value, -1, '{{food.0.id}}');this.parentNode.querySelector('[type=number]').stepDown();">
+                                    -
+                                </button>
+                                
+                                <input type="number" name="{{food.0.id}}" min="0" max="10" value="{{ food.1 }}" class="food-quantity" readonly>
+                                
+                                <button type="button" class="btn-quantity" onclick="addPrice('{{food.0.price}}', this.parentNode.querySelector('[type=number]').value, 1, '{{food.0.id}}');this.parentNode.querySelector('[type=number]').stepUp();" >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                        <div class="food-tot-price" id="tot-price-{{ food.0.id }}">0 $</div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="payment-method">
+                <div class="method">
+                    <label for="method"><b>Select Payment Method</b></label>
+                </div>
+                <div class="methods">
+                    <select name="payment_method" required>
+                        {% for method in methods %}
+                            <option value="{{ method.name }}">{{ method.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="total-price">
+                <div class="price-name">Total price</div>
+                <div class="price"><b>9</b></div>
+            </div>
+        </div>
+        <div class="center">
+            <button type="submit" id="order">Confirm Order</button>    
+        </div>
+    </form>
+
+    <script>
+        let total = 0;
+        const price_div = document.getElementsByClassName('price')[0];
+        const max_val = 10;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            Array.prototype.forEach.call(document.getElementsByClassName('food-quantity'), (input) => {
+                var price = document.getElementById("food-" + input.name).textContent.split(" ").pop();
+                document.getElementById("tot-price-" + input.name).textContent = Number(input.value * price).toFixed(2) + ' $';
+                total += Number(document.getElementById("tot-price-" + input.name).textContent.split(" ")[0]);
+            });
+            price_div.textContent = total.toFixed(2) + ' $';
+        });
+        
+        function addPrice(price, value, mult, id) {
+            if ((value < max_val && value >= 0  && mult == 1) || (value <= max_val && value > 0  && mult == -1)){
+                const price_id = document.getElementById("tot-price-" + id);
+                let price_food = Number(price_id.textContent.split(" ")[0]);
+
+                total += (Number(price) * mult);
+                price_food += (Number(price) * mult);
+
+                if (total.toFixed(2) <= 0.00){
+                    total = 0.00;
+                }
+                if (price_food.toFixed(2) <= 0.00){
+                    price_food = 0.00;
+                }
+                price_id.textContent = price_food.toFixed(2) + ' $';
+                price_div.textContent = total.toFixed(2) + ' $';
+                console.log(total);
+                console.log(price);
+            }
+        }
+    </script>
+{% endblock %}

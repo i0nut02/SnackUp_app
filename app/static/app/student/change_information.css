@@ -1,0 +1,79 @@
+/* Apply some basic styles to the body */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the form container */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Style the heading */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style the labels */
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Style the input and select elements */
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Style the select dropdown */
+select {
+  appearance: none;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 30px;
+}
+
+/* Style the submit button */
+input[type="submit"], input[type="button"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff5656;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Style the submit button on hover */
+input[type="submit"]:hover, input[type="button"]:hover {
+  background-color: #f44336;
+}
+
+/* Style the error messages */
+.error-message {
+  color: #f44336;
+  margin-bottom: 15px;
+}
