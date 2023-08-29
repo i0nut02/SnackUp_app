@@ -332,8 +332,9 @@ def menu(request):
                     else:
                         Cart.objects.create(student= student, food = foods.get(pk=int(k)), quantity= int(v))
         
+        food_to_render = [(cart_obj.food, cart_obj.quantity) for cart_obj in Cart.objects.filter(student= student)]
         return render(request, "app/student/cart.html", {
-            "order" : order_student.items(), "methods" : company.payment_methods.all()
+            "order" : food_to_render, "methods" : company.payment_methods.all()
         })
 
     if company == None:
