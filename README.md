@@ -7,7 +7,7 @@ If you have already installed `python` and `pip` you have just to run the follow
 pip install django
 ```
 
-Move into `SnackUP/` directory and run the following command (If it doesn't work try python2 or python3 instead of python):
+Move into `SnackUP_app-main/` directory and run the following command (If it doesn't work try python2 or python3 instead of python):
 ```
 python manage.py runserver
 ```
