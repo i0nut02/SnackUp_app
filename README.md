@@ -13,5 +13,5 @@ python manage.py runserver
 ```
 Now you can open any of your browser and enter this url `http://127.0.0.1:8000`
 
-## Demo 
-https://github.com/i0nut02/SnackUP_app/assets/99051485/d62d242f-8799-4db5-93ef-fbf8a5e296e8
+## Demo
+https://github.com/i0nut02/SnackUP_app/assets/99051485/f71b7a01-9bc4-43db-a791-feed26f4f762
